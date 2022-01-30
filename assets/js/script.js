@@ -1,13 +1,11 @@
-var currentDate = moment().format('dddd, MMM Do YYYY');
-$("#day").html(currentDate);
+var currentDate = moment().format('LLLL');
+$("#day_Time").html(currentDate);
 
-var currentTime = moment().format('hhh, mmm');
-$("#time").html(currentTime);
 
 $(document).ready(function () {
-    // saveBtn click listener 
+    // Listener
     $(".saveBtn").on("click", function () {
-        // Get nearby values of the description in JQuery
+        
         var text = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
 
@@ -16,14 +14,14 @@ $(document).ready(function () {
     })
 
     function timeTracker() {
-        //get current number of hours.
+        
         var timeNow = moment().hour();
 
         // loop over time blocks
         $(".time-block").each(function () {
             var blockTime = parseInt($(this).attr("id").split("hour")[1]);
 
-            // To check the time and add the classes for background indicators
+            
             if (blockTime < timeNow) {
                 $(this).removeClass("future");
                 $(this).removeClass("present");
@@ -43,7 +41,7 @@ $(document).ready(function () {
         })
     }
 
-    // Get item from local storage if any
+    // LS values
     $("#nine .description").val(localStorage.getItem("nine"));
     $("#ten .description").val(localStorage.getItem("ten"));
     $("#eleven .description").val(localStorage.getItem("eleven"));
